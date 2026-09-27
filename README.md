@@ -1,4 +1,4 @@
-# G.ONE# G.ONE (Jeevan)
+# G.ONE
 
 Getting a medical bill shouldn't feel like getting a second diagnosis.
 
