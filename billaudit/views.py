@@ -1,6 +1,5 @@
 from django.shortcuts import render
-
-# Create your views here.
+from .models import Bill
 from .ocr_utils import extract_text_from_image, parse_line_items, check_bill
 
 def upload_bill(request):
