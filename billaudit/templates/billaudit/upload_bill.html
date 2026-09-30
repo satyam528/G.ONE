@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Bill - Jeevan</title>
+</head>
+<body>
+    <h1>Upload Your Medical Bill</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="bill_image" accept="image/*" required>
+        <button type="submit">Analyze Bill</button>
+    </form>
+</body>
+</html>

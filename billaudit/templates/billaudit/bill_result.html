@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bill Analysis Result - G.ONE </title>
+</head>
+<body>
+    <h1>Analysis Result</h1>
+
+    <h2>Extracted Text</h2>
+    <pre>{{ bill.extracted_text }}</pre>
+
+    <h2>Computed Total</h2>
+    <p>₹{{ findings.computed_total }}</p>
+
+    {% if findings.sum_mismatch %}
+        <h2 style="color:red;">⚠ Total Mismatch</h2>
+        <p>Stated total: ₹{{ findings.sum_mismatch.stated_total }}</p>
+        <p>Computed total: ₹{{ findings.sum_mismatch.computed_total }}</p>
+        <p>Difference: ₹{{ findings.sum_mismatch.difference }}</p>
+    {% endif %}
+
+    {% if findings.duplicates %}
+        <h2 style="color:orange;">⚠ Duplicate Items Found</h2>
+        <ul>
+        {% for item in findings.duplicates %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if findings.high_value_flags %}
+        <h2 style="color:orange;">⚠ High-Value Items</h2>
+        <ul>
+        {% for item in findings.high_value_flags %}
+            <li>{{ item.item }} — ₹{{ item.amount }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <a href="{% url 'upload_bill' %}">Upload Another Bill</a>
+</body>
+</html>
